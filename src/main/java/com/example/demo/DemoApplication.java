@@ -14,19 +14,22 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner runner(PersonRepository repository) {
-		return args -> {
-			Person person = new Person("Bruce Wane", "Batman@email.com", 37);
-
-			repository.insert(person);
-
-//			repository.findPersonById(2).ifPresentOrElse(person1 -> {
-//				System.out.println(person1 + " already exist");
-//			}, () -> {
-//				System.out.println("Inserting person" + person);
-//				repository.insert(person);
-//			});
-		};
-	}
+//	@Bean
+//	CommandLineRunner runner(PersonRepository repository) {
+//		return args -> {
+//			Person person = new Person("2", "Bruce Wane", "Batman@email.com", 37);
+//
+//			repository.insert(person);
+//
+//////			repository.findPersonById(2).ifPresentOrElse(person1 -> {
+//////				System.out.println(person1 + " already exist");
+//////			}, () -> {
+//////				System.out.println("Inserting person" + person);
+//////				repository.insert(person);
+//////			});
+//			for (Person p: repository.findAll()){
+//				System.out.println("Name: " + p.getName());
+//			}
+//		};
+//	}
 }

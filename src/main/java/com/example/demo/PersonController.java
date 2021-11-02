@@ -1,11 +1,10 @@
 package com.example.demo;
 
 //import lombok.AllArgsConstructor;
-import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,37 +13,35 @@ import java.util.List;
 @RequestMapping(path = "/api")
 public class PersonController {
 
-    private final List<Person> personList = new ArrayList<>();
+    private Person person;
+    List<Person> personList = new ArrayList<>();
+
+    @Autowired
     private PersonRepository personRepository;
 
-    @GetMapping("/persons")
-    public List<Person> fetchAllPersons() {
-        return personRepository.findAll();
+    @PostMapping("/person")
+    public String setPersonList(@RequestBody Person person) {
+
+        personRepository.save(person);
+        return "Added person with id: " + person.getId();
+
     }
+
 
     @GetMapping("/person")
-    public List<List<Person>> person() {
-        System.out.println("INSIDE GET ");
+    public List<Person> fetchAllPersons() {
+        return personRepository.findAll();
 
-//        return this.personRepository.findAll();
-        return List.of(personList);
     }
 
-    @PostMapping("/person")
-    public String setPersonList(int id, String name, String email, int age) {
-        System.out.println("INSIDE POST MAPPING");
-
-        this.personList.add(new Person(id, name, email, age));
-        return personList.toString();
-    }
 
     @GetMapping("add/person")
     public String setPersonList() {
         return "<form method=POST action=/api/person>" +
-                "<h4>ID</h4><input type=number name=id required></br>" +
-                "<h4>Name</h4><input type=text name=name required></br>" +
-                "<h4>Email</h4><input type=text name=email required></br>" +
-                "<h4>Age</h4><input type=number name=age required></br>" +
+                "<h4>ID   <input type=text name=id ></h4></br>" +
+                "<h4>Name <input type=text name=name required></h4></br>" +
+                "<h4>Email<input type=text name=email required></h4></br>" +
+                "<h4>Age  <input type=number name=age required></h4></br>" +
                 "<input type=submit value=submit>" +
                 "</form>";
     }
