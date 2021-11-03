@@ -8,7 +8,7 @@ import java.util.Optional;
 
 
 public interface PersonRepository extends MongoRepository<Person, String> {
-    Person findPersonById(@Param("name") Integer id);
+    Person findPersonById(@Param("id") String id);
 
 
 }
