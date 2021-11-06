@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Person form</title>
+</head>
+<body>
+  <h1>Enter Details to add person.</h1>
+  <form method="post" th:action="@{/api/add/person}">
+      <input type="text" name="id">
+      <input type="text" name="name" required>
+      <input type="text" name="email" required>
+      <input type="number" name="age" required>
+      <input type="submit" value="Submit">
+  </form>
+
+</body>
+</html>

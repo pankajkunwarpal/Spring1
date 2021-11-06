@@ -90,16 +90,16 @@ public class PersonController {
     add person entity in database.
      */
 
-    @GetMapping("add/person")
-    public String setPersonList() {
-        return "<form method=POST action=/api/add/person>" +
-                "<h4>ID   <input type=text name=id ></h4></br>" +
-                "<h4>Name <input type=text name=name required></h4></br>" +
-                "<h4>Email<input type=text name=email required></h4></br>" +
-                "<h4>Age  <input type=number name=age required></h4></br>" +
-                "<input type=submit value=submit>" +
-                "</form>";
-    }
+//    @GetMapping("add/person")
+//    public String setPersonList() {
+//        return "<form method=POST action=/api/add/person>" +
+//                "<h4>ID   <input type=text name=id ></h4></br>" +
+//                "<h4>Name <input type=text name=name required></h4></br>" +
+//                "<h4>Email<input type=text name=email required></h4></br>" +
+//                "<h4>Age  <input type=number name=age required></h4></br>" +
+//                "<input type=submit value=submit>" +
+//                "</form>";
+//    }
 
 }
 
