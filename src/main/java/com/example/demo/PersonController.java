@@ -15,6 +15,8 @@ public class PersonController {
 
     @Autowired
     private PersonRepository personRepository;
+
+
     /*
     Accept Post request with Person object with or without
     person id; person id can be automatically generated.
@@ -27,35 +29,33 @@ public class PersonController {
 
     }
 
+
     /*
     Accept Get request to and display all person entity
     stored in the database.
      */
-
     @GetMapping("/person")
     public List<Person> fetchAllPersons() {
         return personRepository.findAll();
 
     }
 
+
     /*
     Accept Post request from Form and add person object
     in the database.
-
      */
-
     @PostMapping("add/person")
     public String addPerson(String id, String name, String email, int age) {
         setPersonList(new Person(id, name, email, age));
         return name + " Added successfully";
     }
 
+
     /*
     Accept delete request to delete entity from database
     if present else return unsuccessful error.
      */
-
-
     @DeleteMapping("delete")
     public String deletePerson(String id) {
 //        return String.format("person with id %s is %s", id, personRepository.findPersonById(id).getName());
@@ -68,11 +68,11 @@ public class PersonController {
         }
     }
 
+
     /*
     Accept Put request and update the person entity name
     with the provided id in the request with specified name.
      */
-
     @PutMapping("update/{id}")
     public String updatePerson(@PathVariable String id, @RequestParam(value = "name", defaultValue = "Unknown Person") String name) {
 
